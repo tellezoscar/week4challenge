@@ -21,6 +21,9 @@ var highscores= [];
 var secondsLeft;
 var timerInterval;
 
+var penalty = 10;
+
+
 init();
 
 function init() {
@@ -76,13 +79,7 @@ function selectAnswer(e) {
   Array.from(answersButtonElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
-  if (
-      question.answers === correct
-     ) {
-         score += 10;
-     } else {
-         secondsLeft -= 10;
-     }
+  
 
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
   } else {
@@ -97,6 +94,7 @@ function setStatusClass(element, correct) {
       element.classList.add('correct')
     } else {
       element.classList.add('wrong')
+      secondsLeft = secondsLeft - penalty;
     }
   }
   
@@ -128,3 +126,59 @@ const questions = [
         ]
       },
 ]
+
+// All done will append last page
+function allDone() {
+    questionsDiv.innerHTML = "";
+    currentTime.innerHTML = "";
+
+    // Heading:
+    var createH1 = document.createElement("h1");
+    createH1.setAttribute("id", "createH1");
+    createH1.textContent = "All Done!"
+
+    questionsDiv.appendChild(createH1);
+
+    // Paragraph
+    var createP = document.createElement("p");
+    createP.setAttribute("id", "createP");
+
+    questionsDiv.appendChild(createP);
+
+    // Calculates time remaining and replaces it with score
+    if (secondsLeft >= 0) {
+        var timeRemaining = secondsLeft;
+        var createP2 = document.createElement("p");
+        clearInterval(holdInterval);
+        createP.textContent = "Your final score is: " + timeRemaining;
+
+        questionsDiv.appendChild(createP2);
+    }
+
+    // Label
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your initials: ";
+
+    questionsDiv.appendChild(createLabel);
+
+// input
+    var createInput = you_finish_this
+
+    questionsDiv.appendChild(createInput);
+
+    // submit
+    var createSubmit = you_finish_this
+
+    questionsDiv.appendChild(createSubmit);
+
+    // Event listener to capture initials and local storage for initials and score
+    createSubmit.addEventListener("click",)
+        var initials = createInput.value;
+
+        if (initials === null) {
+
+            console.log("No value entered!");
+
+        } else {}
+    }
