@@ -1,0 +1,59 @@
+* {
+    box-sizing:border-box;
+}
+nav {
+    display:flex;
+justify-content: space-between;
+padding:20px;
+}
+
+nav button{
+    color:purple;
+    border-radius: 5px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+}
+
+section .rules{
+    text-align: center;
+    font-size: 25px;
+}
+
+.container {
+    margin: 100px 700px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    max-width: 80%;
+    background-color:white;
+    border-radius: 5px;
+    padding:10px;
+    box-shadow: 0 0 2px 2px;
+}
+.btn-grid{
+    display: grid;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.btn {
+background-color: blue;
+border-radius: 5px;
+padding: 5px 10px;
+outline:none;
+color:white;
+}
+.start-btn {
+    margin-left: 200px;
+}
+.btn:hover {
+    opacity:0.7;
+}
+
+.hide {
+    display:none;
+}
