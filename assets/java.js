@@ -1,4 +1,5 @@
 const startButton = document.getElementById('start-btn')
+const timerElement = document.getElementById("timer")
 const questionContainerElement = document.getElementById ('question-container')
 const questionElement = document.getElementById('question')
 const answersButtonElement = document.getElementById('answer-buttons')
@@ -11,8 +12,32 @@ nextQuestion.addEventListener('click', () => {
     setNextQuestion()
 })
 
+var highscore = {
+    initials: "",
+    score: 0,
+};
+
+var highscores= [];
+var secondsLeft;
+var timerInterval;
+
+init();
+
+function init() {
+    score = 0;
+    secondsLeft = 60;
+}
+
 function startQuiz() {
-console.log('started')
+timerInterval = setInterval(function() {
+    secondsLeft--;
+    timerElement.textContent = secondsLeft;
+    
+    if (secondsLeft <= 0) {
+        clearInterval(timerInterval);
+    }
+}, 1000);
+
 startButton.classList.add('hide')
 shuffledQuestions = questions.sort(() =>Math.random() - .5)
 currentQuestionIndex = 0
