@@ -38,6 +38,7 @@ timerInterval = setInterval(function() {
     }
 }, 1000);
 
+
 startButton.classList.add('hide')
 shuffledQuestions = questions.sort(() =>Math.random() - .5)
 currentQuestionIndex = 0
@@ -56,9 +57,6 @@ function showQuestion(question) {
       const button = document.createElement('button')
       button.innerText = answer.text
       button.classList.add('btn')
-    //   if (answer.correct) {
-    //     button.dataset.correct = answer.correct
-    //   }
       button.addEventListener('click', selectAnswer)
       answersButtonElement.appendChild(button)
     })
@@ -78,6 +76,14 @@ function selectAnswer(e) {
   Array.from(answersButtonElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
+  if (
+      question.answers === correct
+     ) {
+         score += 10;
+     } else {
+         secondsLeft -= 10;
+     }
+
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
   } else {
     startButton.innerText = 'View Highscores'
