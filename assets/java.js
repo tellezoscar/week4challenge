@@ -29,6 +29,7 @@ init();
 function init() {
     score = 0;
     secondsLeft = 60;
+   
 }
 
 function startQuiz() {
@@ -60,11 +61,14 @@ function showQuestion(question) {
       const button = document.createElement('button')
       button.innerText = answer.text
       button.classList.add('btn')
+      if (answer.correct) {
+          button.dataset.correct = answer.correct
+      }
       button.addEventListener('click', selectAnswer)
       answersButtonElement.appendChild(button)
     })
-
-    
+    if (currentQuestionIndex === 0 )
+    allDone()
   }
 
   function resetState() {
@@ -81,43 +85,38 @@ function selectAnswer(e) {
   Array.from(answersButtonElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
-  
 
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-  } else {
+  } 
+  
+  else {
     startButton.innerText = 'View Highscores'
     startButton.classList.remove('hide')
   }
-
-//   if (
-//     question.answers === correct
-// ) {
-//     score += 0;
-// } else {
-//     secondsLeft -=10;
-// }
-
 
 }
 
 function setStatusClass(element, correct) {
      clearStatusClass(element)
-//     if (correct) {
-//         secondsLeft = secondsLeft += penalty;
-//     } else {
+     if (correct) {
+         element.classList.add('correct')
+     } else {
+         element.classList.add('wrong')
+     }
+
+    if (correct) {
+        secondsLeft = secondsLeft += penalty;
+    } else {
       
-//       secondsLeft = secondsLeft -= penalty;
-//     }
+      secondsLeft = secondsLeft -= penalty;
+    }
   }
   
   function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
   }
-//   if (secondsLeft === 0) {
-//     clearInterval(timerInterval);
-//     alert("youre")
-// }
+
 const questions = [
     {
         question: 'What is 2 + 2?',
