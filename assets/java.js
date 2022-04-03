@@ -63,6 +63,8 @@ function showQuestion(question) {
       button.addEventListener('click', selectAnswer)
       answersButtonElement.appendChild(button)
     })
+
+    
   }
 
   function resetState() {
@@ -86,26 +88,36 @@ function selectAnswer(e) {
     startButton.innerText = 'View Highscores'
     startButton.classList.remove('hide')
   }
+
+//   if (
+//     question.answers === correct
+// ) {
+//     score += 0;
+// } else {
+//     secondsLeft -=10;
+// }
+
+
 }
 
 function setStatusClass(element, correct) {
-    clearStatusClass(element)
-    if (correct) {
-        secondsLeft = secondsLeft += penalty;
-    } else {
+     clearStatusClass(element)
+//     if (correct) {
+//         secondsLeft = secondsLeft += penalty;
+//     } else {
       
-      secondsLeft = secondsLeft -= penalty;
-    }
+//       secondsLeft = secondsLeft -= penalty;
+//     }
   }
   
   function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
   }
-  if (secondsLeft === 0) {
-    clearInterval(timerInterval);
-    alert("youre")
-}
+//   if (secondsLeft === 0) {
+//     clearInterval(timerInterval);
+//     alert("youre")
+// }
 const questions = [
     {
         question: 'What is 2 + 2?',
