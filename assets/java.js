@@ -91,10 +91,10 @@ function selectAnswer(e) {
 function setStatusClass(element, correct) {
     clearStatusClass(element)
     if (correct) {
-      element.classList.add('correct')
+        secondsLeft = secondsLeft += penalty;
     } else {
-      element.classList.add('wrong')
-      secondsLeft = secondsLeft - penalty;
+      
+      secondsLeft = secondsLeft -= penalty;
     }
   }
   
@@ -102,7 +102,10 @@ function setStatusClass(element, correct) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
   }
-
+  if (secondsLeft === 0) {
+    clearInterval(timerInterval);
+    alert("youre")
+}
 const questions = [
     {
         question: 'What is 2 + 2?',
@@ -129,8 +132,8 @@ const questions = [
 
 // All done will append last page
 function allDone() {
-    questionsDiv.innerHTML = "";
-    currentTime.innerHTML = "";
+    questionsDiv.innerHTML = "1";
+    currentTime.innerHTML = "2";
 
     // Heading:
     var createH1 = document.createElement("h1");
